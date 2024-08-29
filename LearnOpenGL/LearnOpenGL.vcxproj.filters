@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\Component">
+      <UniqueIdentifier>{81211156-a2a7-40f0-97ec-f10b03ecb96e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\interface">
+      <UniqueIdentifier>{accf045f-035b-41b8-8e24-423340e4ece3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Component">
+      <UniqueIdentifier>{a8937cdf-c7b6-46ad-bd70-5753d48be83d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="glad.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Vbo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Vao.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Ebo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Component.cpp">
+      <Filter>源文件\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Mesh.cpp">
+      <Filter>源文件\Component</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Ebo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vao.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vbo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Texture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Object.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Scene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Component\Component.h">
+      <Filter>头文件\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="include\interface\IRender.h">
+      <Filter>头文件\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Component\Mesh.h">
+      <Filter>头文件\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="include\define.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

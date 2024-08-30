@@ -26,6 +26,13 @@ void Mesh::Render()
 	}
 	glUseProgram(shaderProgram);
 
+	// 设置模型矩阵
+	if (object)
+	{
+		const auto modelMatrix = object->GetModelMatrix();
+		Shader::SetUniformMat(SHADER_MODEL, modelMatrix);
+	}
+
 	// 绑定纹理
 	for (size_t i = 0; i < textures.size(); i++)
 	{

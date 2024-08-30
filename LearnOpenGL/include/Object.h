@@ -3,14 +3,17 @@
 #include <memory>
 #include <string>
 #include <glm/glm.hpp>
+#include <glm/detail/type_quat.hpp>
 
 #include "Component/Component.h"
 #include "interface/IRender.h"
 
+class Component;
+
 /**
  * \brief 三维空间中的物体
  */
-class Object : public IRender
+class Object : public IRender, public std::enable_shared_from_this<Object>
 {
 public:
 	Object();
@@ -24,18 +27,22 @@ public:
 	std::shared_ptr<Component> AddComponent(const std::shared_ptr<Component>& component);
 	std::shared_ptr<Component> AddComponent(const std::string& addName);
 	template <class T>
-	[[nodiscard]] std::shared_ptr<T> GetComponent();
-	[[nodiscard]] std::shared_ptr<Component> GetComponent(const std::string& findName);
+	_NODISCARD std::shared_ptr<T> GetComponent();
+	_NODISCARD std::shared_ptr<Component> GetComponent(const std::string& findName);
+
+	_NODISCARD glm::vec3 GetEulerAngle() const;
+	void SetEulerAngle(const glm::vec3& degree);
+	_NODISCARD glm::mat4 GetModelMatrix() const;
 
 public:
 	std::string name;
 
 	glm::vec3 position;
-	glm::vec3 eulerAngle;
+	glm::quat rotation;
 	glm::vec3 scale;
 
 private:
-	std::vector<std::shared_ptr<Component>> m_Components;
+    std::vector<std::shared_ptr<Component>> m_Components;
 	std::vector<std::shared_ptr<IRender>> m_RenderComponents;
 };
 

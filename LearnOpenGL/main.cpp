@@ -80,6 +80,10 @@ int main()
     mesh->model = std::make_shared<Vao>(vao);
     mesh->textures.push_back(std::make_shared<Texture>(avatarTexture));
 
+    obj->position = glm::vec3(0.0f, -0.5f, 0.0f);
+    obj->scale = glm::vec3(0.5f);
+    obj->SetEulerAngle(glm::vec3(45.0f, 45.0f, 0.0f));
+
     Scene::Current()->AddObject(obj);
 
     // 线框模式

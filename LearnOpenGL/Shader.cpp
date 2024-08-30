@@ -135,7 +135,7 @@ void Shader::SetUniformFloat(const std::string& name, float value, GLuint progra
 	glUniform1f(location, value);
 }
 
-void Shader::SetUniformFloatVec(const std::string& name, const std::vector<float>& value, GLuint program)
+void Shader::SetUniformVec(const std::string& name, const std::vector<float>& value, GLuint program)
 {
 	const GLint location = StartSetUniform(name, program);
 	switch (value.size())

@@ -6,6 +6,9 @@
 #include "Vao.h"
 #include "interface/IRender.h"
 
+/**
+ * \brief 可渲染的网格
+ */
 class Mesh final : public Component, public IRender
 {
 public:

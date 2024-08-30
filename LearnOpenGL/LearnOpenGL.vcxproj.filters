@@ -57,6 +57,12 @@
     <ClCompile Include="Component\Mesh.cpp">
       <Filter>源文件\Component</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Ebo.h">
@@ -90,6 +96,21 @@
       <Filter>头文件\Component</Filter>
     </ClInclude>
     <ClInclude Include="include\define.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Timer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\global.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gl.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

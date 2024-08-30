@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Component\Component.cpp" />
     <ClCompile Include="Component\Mesh.cpp" />
     <ClCompile Include="Ebo.cpp" />
@@ -143,21 +144,27 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Vao.cpp" />
     <ClCompile Include="Vbo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Camera.h" />
     <ClInclude Include="include\Component\Component.h" />
     <ClInclude Include="include\Component\Mesh.h" />
     <ClInclude Include="include\define.h" />
     <ClInclude Include="include\Ebo.h" />
+    <ClInclude Include="include\gl.h" />
+    <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\interface\IRender.h" />
     <ClInclude Include="include\Object.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Shader.h" />
     <ClInclude Include="include\Texture.h" />
+    <ClInclude Include="include\Timer.h" />
     <ClInclude Include="include\Vao.h" />
     <ClInclude Include="include\Vbo.h" />
+    <ClInclude Include="include\global.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

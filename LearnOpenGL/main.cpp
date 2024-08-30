@@ -1,20 +1,16 @@
 ﻿#include <iostream>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include "gl.h"
 
-#include "define.h"
+#include "global.h"
+#include "Timer.h"
+#include "Input.h"
+#include "Camera.h"
 #include "Scene.h"
 #include "Shader.h"
 #include "Texture.h"
 #include "Vao.h"
 #include "Vbo.h"
 #include "Component/Mesh.h"
-
-void ProcessInput(GLFWwindow* window)
-{
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, GLFW_TRUE);
-}
 
 int main()
 {
@@ -25,17 +21,19 @@ int main()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // 创建窗口
-    constexpr int WIN_WIDTH = 800, WIN_HEIGHT = 600;
-    GLFWwindow* window = glfwCreateWindow(WIN_WIDTH, WIN_HEIGHT, "LearnOpenGL", nullptr, nullptr);
-    if (window == nullptr)
+    const int winWidth = static_cast<int>(Camera::Current()->width);
+    const int winHeight = static_cast<int>(Camera::Current()->height);
+    g_Window = glfwCreateWindow(winWidth, winHeight, "LearnOpenGL", nullptr, nullptr);
+    if (g_Window == nullptr)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
         return -1;
     }
-    glfwMakeContextCurrent(window);
+    glfwMakeContextCurrent(g_Window);
+    Input::Init();
 
-    // 加载GLAD
+	// 加载GLAD
     if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)))
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
@@ -43,10 +41,12 @@ int main()
     }
 
     // 设定视口
-    glViewport(0, 0, WIN_WIDTH, WIN_HEIGHT);
-    glfwSetFramebufferSizeCallback(window, [](GLFWwindow* _, const int width, const int height)
+    glViewport(0, 0, winWidth, winHeight);
+    glfwSetFramebufferSizeCallback(g_Window, [](GLFWwindow* _, const int width, const int height)
                                    {
                                        glViewport(0, 0, width, height);
+                                       Camera::Current()->width = static_cast<float>(width);
+    								   Camera::Current()->height = static_cast<float>(height);
                                    });
 
     // 初始化Shader
@@ -80,28 +80,32 @@ int main()
     mesh->model = std::make_shared<Vao>(vao);
     mesh->textures.push_back(std::make_shared<Texture>(avatarTexture));
 
-    obj->position = glm::vec3(0.0f, -0.5f, 0.0f);
-    obj->scale = glm::vec3(0.5f);
-    obj->SetEulerAngle(glm::vec3(45.0f, 45.0f, 0.0f));
+    //obj->position = glm::vec3(0.0f, -0.5f, 0.0f);
+    //obj->scale = glm::vec3(0.5f);
+    //obj->SetEulerAngle(glm::vec3(45.0f, 45.0f, 0.0f));
 
     Scene::Current()->AddObject(obj);
+
+    // 调整相机
+    Camera::Current()->position = glm::vec3(0.0f, 0.0f, 3.0f);
+    //Camera::Current()->SetEulerAngle(glm::vec3(45.0f, 0.0f, 0.0f));
 
     // 线框模式
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 	// 渲染循环
-    while (!glfwWindowShouldClose(window))
+    while (!glfwWindowShouldClose(g_Window))
     {
-        ProcessInput(window);    // 处理输入
-
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);   // 设置背景色
         glClear(GL_COLOR_BUFFER_BIT);
 
         // 进行渲染
+        Camera::Current()->Update();
         Scene::Current()->Render();
 
-        glfwSwapBuffers(window);    // 交换缓冲以显示下一帧图像
+        glfwSwapBuffers(g_Window);    // 交换缓冲以显示下一帧图像
         glfwPollEvents();   // 处理用户输入事件
+        Timer::Update();
     }
 
     glfwTerminate();
